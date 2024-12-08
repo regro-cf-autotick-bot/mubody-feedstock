@@ -12,7 +12,7 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
@@ -26,7 +26,7 @@ requirements:
     - pandas
     - matplotlib-base
     - tqdm
-    - astropy
+    - astropy-base
     - spiceypy
     - numba
     - requests
