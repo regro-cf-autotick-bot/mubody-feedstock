@@ -6,21 +6,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/mubody-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/mubody-{{ version }}.tar.gz
   sha256: bbd519b96e8d7b82e29be540eee845576ca7d58fec12069a5f0c0b31bb564a53
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - setuptools >=61
     - pip
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - numpy
     - scipy
     - pandas
@@ -32,6 +32,8 @@ requirements:
     - requests
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - mubody
 
